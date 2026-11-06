@@ -26,20 +26,28 @@ are reproducible and comparable.
 ## Latest results
 
 `heat_exchanger_suite_v1`: 30 heat-exchanger design tasks at three difficulty
-levels, one answer per task.
+levels, one answer per task. There is no single ranking: we report how often a
+model's design meets every requirement, and how good its working designs are.
 
-| # | Model | Mean score |
-|---|---|---|
-| 1 | [**SM_heat_exchanger_v1**](https://huggingface.co/SM-AI/SM_heat_exchanger_v1) (ours, fine-tuned from Qwen2.5-7B-Instruct) | **0.329** |
-| 2 | claude-opus-5 | 0.284 |
-| 3 | deepseek-v4.1-flash | 0.271 |
-| 4 | deepseek-v4-pro | 0.269 |
-| 5 | gpt-oss-120b | 0.264 |
-| … | | |
-| 10 | Qwen2.5-7B-Instruct (base model of SM_heat_exchanger_v1) | 0.176 |
+| Model | Requirements met | Quality when met | Easy | Medium | Hard |
+|---|---|---|---|---|---|
+| claude-opus-5 | **47%** | 0.30 | 0.30 | **0.27** | **0.28** |
+| deepseek-v4-pro | 43% | 0.30 | 0.30 | 0.23 | **0.28** |
+| gpt-oss-120b | 43% | 0.30 | 0.30 | 0.26 | 0.24 |
+| deepseek-v4.1-flash | 40% | 0.30 | 0.29 | 0.25 | 0.27 |
+| Qwen2.5-7B-Instruct (base model) | 33% | 0.30 | 0.30 | 0.12 | 0.11 |
+| [**SM_heat_exchanger_v1**](https://huggingface.co/SM-AI/SM_heat_exchanger_v1) (ours, fine-tuned from Qwen2.5-7B-Instruct) | 20% | **0.76** | **0.57** | 0.21 | 0.20 |
 
-Fine-tuning lifts the base model's score by 87%, from 0.176 to 0.329, on tasks
-it never saw. [Full leaderboard →](https://suni-muhendis.github.io/sm-bench/leaderboard/)
+*Requirements met:* share of answers that reach the duty target within both
+pressure-drop limits. *Quality when met:* mean score of those answers, 0.3 for
+a design that only meets the requirements, up to 1 for a cheap,
+well-engineered one. *Easy / Medium / Hard:* mean score per level.
+
+The other models meet the requirements more often, but with oversized designs:
+none of them earns anything above the 0.3 for meeting them. Our model, trained
+against this referee on other tasks, designs to cost: its working designs
+score 0.76, but it sizes close to the target and misses it more often.
+[Full results →](https://suni-muhendis.github.io/sm-bench/leaderboard/)
 
 ## Current limitations and next steps
 
