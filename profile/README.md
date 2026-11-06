@@ -26,30 +26,26 @@ are reproducible and comparable.
 ## Latest results
 
 `heat_exchanger_suite_v2`: 30 heat-exchanger design tasks at three difficulty
-levels, one answer per task, judged with score V5. There is no single ranking:
-we report how often a model's design meets every requirement, and how good its
-working designs are.
+levels, one answer per task, judged with score V5.
 
-| Model | Requirements met | Score when met | Easy | Medium | Hard |
-|---|---|---|---|---|---|
-| claude-opus-5 | **47%** | 0.57 | **0.57** | **0.30** | **0.14** |
-| deepseek-v4-pro | 43% | 0.42 | 0.41 | 0.21 | **0.14** |
-| gpt-oss-120b | 43% | 0.39 | 0.37 | 0.22 | 0.12 |
-| deepseek-v4.1-flash | 40% | 0.48 | 0.43 | 0.24 | 0.13 |
-| Qwen2.5-7B-Instruct (base model) | 33% | 0.35 | 0.35 | 0.06 | 0.05 |
-| [**SM_heat_exchanger_v1**](https://huggingface.co/SM-AI/SM_heat_exchanger_v1) (ours, fine-tuned from Qwen2.5-7B-Instruct) | 20% | **0.79** | 0.53 | 0.11 | 0.10 |
+| Model | Easy | Medium | Hard | Score when met |
+|---|---|---|---|---|
+| claude-opus-5 | **0.57** | **0.30** | **0.14** | 0.57 |
+| deepseek-v4.1-flash | 0.43 | 0.24 | 0.13 | 0.48 |
+| deepseek-v4-pro | 0.41 | 0.21 | **0.14** | 0.42 |
+| [**SM_heat_exchanger_v1**](https://huggingface.co/SM-AI/SM_heat_exchanger_v1) (ours, fine-tuned from Qwen2.5-7B-Instruct) | 0.53 | 0.11 | 0.10 | **0.79** |
+| gpt-oss-120b | 0.37 | 0.22 | 0.12 | 0.39 |
+| Qwen2.5-7B-Instruct (base model) | 0.35 | 0.06 | 0.05 | 0.35 |
 
-*Requirements met:* share of answers that reach the duty target within both
-pressure-drop limits. *Score when met:* mean score of those answers. Score V5
-gives 0.3 for meeting the requirements and up to 1 the closer the cost comes
-to a well-engineered reference design (on a logarithmic scale); a design that
-misses a requirement earns at most 0.15. *Easy / Medium / Hard:* mean score
-per level.
+*Easy / Medium / Hard:* mean score per level. Score V5 gives 0.3 for a design
+that meets the duty target within both pressure-drop limits, and up to 1 the
+closer its cost comes to a well-engineered reference design (on a logarithmic
+scale); a design that misses a requirement earns at most 0.15. *Score when
+met:* mean score of the answers that met every requirement.
 
-The frontier models meet the requirements most often and claude-opus-5 leads
-every level. Our model designs closest to cost (its working designs score
-0.79), but it sizes close to the target and misses it more often; it scores
-above its own base model at every level.
+claude-opus-5 leads every level. Our model scores above its own base model at
+every level, and its working designs are the closest to cost (0.79), but it
+sizes close to the target and misses it more often than the frontier models.
 
 **Read before comparing:**
 
