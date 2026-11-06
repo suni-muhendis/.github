@@ -61,11 +61,13 @@ These results are a first, deliberately narrow measurement:
 | [sm-bench](https://github.com/suni-muhendis/sm-bench) | SM-Bench: benchmark runners, recorded results, leaderboard and site |
 | [sm-heat-exchanger](https://github.com/suni-muhendis/sm-heat-exchanger) | Heat-exchanger environment: shell-and-tube and concentric-tube designs |
 | [sm-core](https://github.com/suni-muhendis/sm-core) | The shared evaluation contract every environment implements |
+| [sm-throughflow](https://github.com/suni-muhendis/sm-throughflow) | *Experimental:* axial-compressor throughflow environment, validation in progress |
 
 ## Roadmap
 
 - ✅ **Heat exchangers**: available
 - 🔜 **Turbomachinery**: axial compressors first, then turbines
+  ([sm-throughflow](https://github.com/suni-muhendis/sm-throughflow), experimental)
 - 🔜 **Rotordynamics**: shafts, bearings, critical speeds
 - 🗺️ **3D turbomachinery flow** and further domains
 
