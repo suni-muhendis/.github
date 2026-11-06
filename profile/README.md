@@ -36,7 +36,7 @@ levels, one answer per task.
 | 4 | deepseek-v4-pro | 0.269 |
 | 5 | gpt-oss-120b | 0.264 |
 | … | | |
-| 9 | Qwen2.5-7B-Instruct (base model of SM_heat_exchanger_v1) | 0.176 |
+| 10 | Qwen2.5-7B-Instruct (base model of SM_heat_exchanger_v1) | 0.176 |
 
 Fine-tuning lifts the base model's score by 87%, from 0.176 to 0.329, on tasks
 it never saw. [Full leaderboard →](https://suni-muhendis.github.io/sm-bench/leaderboard/)
