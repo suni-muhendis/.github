@@ -29,7 +29,7 @@ are reproducible and comparable.
 levels, one answer per task. There is no single ranking: we report how often a
 model's design meets every requirement, and how good its working designs are.
 
-| Model | Requirements met | Quality when met | Easy | Medium | Hard |
+| Model | Requirements met | Score when met | Easy | Medium | Hard |
 |---|---|---|---|---|---|
 | claude-opus-5 | **47%** | 0.30 | 0.30 | **0.27** | **0.28** |
 | deepseek-v4-pro | 43% | 0.30 | 0.30 | 0.23 | **0.28** |
@@ -39,14 +39,30 @@ model's design meets every requirement, and how good its working designs are.
 | [**SM_heat_exchanger_v1**](https://huggingface.co/SM-AI/SM_heat_exchanger_v1) (ours, fine-tuned from Qwen2.5-7B-Instruct) | 20% | **0.76** | **0.57** | 0.21 | 0.20 |
 
 *Requirements met:* share of answers that reach the duty target within both
-pressure-drop limits. *Quality when met:* mean score of those answers, 0.3 for
+pressure-drop limits. *Score when met:* mean score of those answers, 0.3 for
 a design that only meets the requirements, up to 1 for a cheap,
 well-engineered one. *Easy / Medium / Hard:* mean score per level.
 
 The other models meet the requirements more often, but with oversized designs:
-none of them earns anything above the 0.3 for meeting them. Our model, trained
-against this referee on other tasks, designs to cost: its working designs
-score 0.76, but it sizes close to the target and misses it more often.
+none of them earns anything above the 0.3 for meeting them. Our model designs
+to cost: its working designs score 0.76, but it sizes close to the target and
+misses it more often.
+
+**Read before comparing:**
+
+- *Different tasks behind the two scores.* Our model met the requirements only
+  on easy tasks; the other models also met them on harder ones.
+- *It knows this referee.* It was trained against the same simulator and cost
+  model on other tasks. The other models answer zero-shot: the prompt gives
+  the cost thresholds but not how cost is computed.
+- *Meeting the requirements is not good design on its own.* The untuned base
+  model meets them on every easy task by returning nearly the same oversized
+  design for every task; the loose easy limits let it pass, and it earns
+  nothing for cost.
+- *The other models are not at their best.* Lowest reasoning effort, one
+  answer per task. More reasoning, or the cost model in the prompt, could
+  change these results; both are next.
+
 [Full results →](https://suni-muhendis.github.io/sm-bench/leaderboard/)
 
 ## Current limitations and next steps
