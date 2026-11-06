@@ -30,14 +30,16 @@ levels, one answer per task.
 
 | # | Model | Mean score |
 |---|---|---|
-| 1 | [**SM_heat_exchanger_v1**](https://huggingface.co/SM-AI/SM_heat_exchanger_v1) (ours, 7B) | **0.329** |
+| 1 | [**SM_heat_exchanger_v1**](https://huggingface.co/SM-AI/SM_heat_exchanger_v1) (ours, fine-tuned from Qwen2.5-7B-Instruct) | **0.329** |
 | 2 | claude-opus-5 | 0.284 |
 | 3 | deepseek-v4.1-flash | 0.271 |
 | 4 | deepseek-v4-pro | 0.269 |
 | 5 | gpt-oss-120b | 0.264 |
+| … | | |
+| 9 | Qwen2.5-7B-Instruct (base model of SM_heat_exchanger_v1) | 0.176 |
 
-Our 7B model scores 87% above its own base model (0.176) on tasks it never
-saw. [Full leaderboard →](https://suni-muhendis.github.io/sm-bench/leaderboard/)
+Fine-tuning lifts the base model's score by 87%, from 0.176 to 0.329, on tasks
+it never saw. [Full leaderboard →](https://suni-muhendis.github.io/sm-bench/leaderboard/)
 
 ## Current limitations and next steps
 
