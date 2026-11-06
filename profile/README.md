@@ -46,9 +46,13 @@ These results are a first, deliberately narrow measurement:
 - **Minimal reasoning.** Every model runs at the lowest reasoning effort it
   offers, so the results measure direct design intuition rather than extended
   thinking. Higher reasoning budgets are next.
-- **One answer per task.** Models answer each task once, at temperature 0
-  where the model accepts it. The effect of sampling temperature and of
-  several attempts per task (best-of-N) is not measured yet.
+- **One run per model.** Each model answered each task once, at temperature 0
+  where the model accepts it. API models are not fully deterministic even
+  then, so a repeated run can move a score; with ten tasks per level, close
+  scores (within a few hundredths) should be read as ties. Repeated runs, to
+  measure this noise and report it as an interval, are next, together with
+  the effect of sampling temperature and of several attempts per task
+  (best-of-N).
 - **Zero-shot only.** Models never see the simulator's verdict. A
   feedback-driven track is coming, where an agent can call the physics
   simulator, read the result and revise its design before answering.
